@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figmel Studio - Admin Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-purple-50/50 text-gray-800 font-sans">
+
+  <!-- LOGIN MODAL -->
+  <div id="loginScreen" class="fixed inset-0 bg-purple-950/80 z-50 flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-3xl max-w-md w-full shadow-2xl space-y-6">
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 bg-purple-600 text-white rounded-2xl mx-auto flex items-center justify-center font-bold text-xl shadow-md">FS</div>
+        <h2 class="text-2xl font-black text-purple-950">Admin Login</h2>
+        <p class="text-sm text-gray-500">Masukkan akun admin untuk mengelola Figmel Studio.</p>
+      </div>
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Username</label>
+          <input type="text" id="loginUser" required class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Password</label>
+          <input type="password" id="loginPass" required class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+        </div>
+        <button type="submit" id="loginBtn" class="w-full bg-purple-600 text-white py-4 rounded-xl font-bold hover:bg-purple-700 shadow-md shadow-purple-200 transition">Masuk Dashboard</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN DASHBOARD -->
+  <div id="dashboardApp" class="hidden">
+    <header class="bg-white shadow-xs sticky top-0 z-40 border-b border-purple-100">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="bg-purple-600 text-white w-9 h-9 rounded-xl flex items-center justify-center font-bold shadow-md shadow-purple-200">FS</div>
+          <h1 class="text-xl font-black text-purple-950">Figmel Studio Admin</h1>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="index.html" target="_blank" class="text-sm bg-purple-100 text-purple-700 px-4 py-2 rounded-xl font-medium hover:bg-purple-200 transition">
+            <i class="fa-solid fa-globe mr-2"></i> Website
+          </a>
+          <button onclick="logout()" class="text-sm bg-red-100 text-red-700 px-4 py-2 rounded-xl font-medium hover:bg-red-200 transition">
+            <i class="fa-solid fa-right-from-bracket mr-2"></i> Keluar
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <aside class="bg-white p-4 rounded-3xl shadow-xs border border-purple-100 h-fit space-y-2">
+        <button onclick="switchTab('portfolios')" id="btn-portfolios" class="w-full text-left px-4 py-3 rounded-2xl font-semibold transition bg-purple-600 text-white shadow-md shadow-purple-200">
+          <i class="fa-solid fa-briefcase w-6"></i> Portofolio
+        </button>
+        <button onclick="switchTab('blogs')" id="btn-blogs" class="w-full text-left px-4 py-3 rounded-2xl font-semibold transition text-gray-600 hover:bg-purple-50">
+          <i class="fa-solid fa-blog w-6"></i> Blog Artikel
+        </button>
+        <button onclick="switchTab('services')" id="btn-services" class="w-full text-left px-4 py-3 rounded-2xl font-semibold transition text-gray-600 hover:bg-purple-50">
+          <i class="fa-solid fa-layer-group w-6"></i> Layanan
+        </button>
+        <button onclick="switchTab('settings')" id="btn-settings" class="w-full text-left px-4 py-3 rounded-2xl font-semibold transition text-gray-600 hover:bg-purple-50">
+          <i class="fa-solid fa-gear w-6"></i> Alamat & Sosmed
+        </button>
+        <button onclick="switchTab('messages')" id="btn-messages" class="w-full text-left px-4 py-3 rounded-2xl font-semibold transition text-gray-600 hover:bg-purple-50">
+          <i class="fa-solid fa-envelope w-6"></i> Pesan Masuk
+        </button>
+      </aside>
+
+      <section class="lg:col-span-3 space-y-6">
+        <!-- PORTFOLIO -->
+        <div id="section-portfolios" class="admin-section space-y-6">
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4"><i class="fa-solid fa-plus-circle mr-2 text-purple-600"></i> Tambah Portofolio Baru</h2>
+            <form id="formPortfolio" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" id="p-title" placeholder="Judul Proyek" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="text" id="p-cat" placeholder="Kategori (UI/UX, Web App)" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="text" id="p-client" placeholder="Nama Klien" class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="text" id="p-date" placeholder="Tanggal Proyek" class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="url" id="p-thumb" placeholder="URL Thumbnail Gambar" class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none md:col-span-2">
+              <input type="url" id="p-live" placeholder="URL Link Proyek Live" class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none md:col-span-2">
+              <textarea id="p-desc" placeholder="Deskripsi Singkat" rows="2" class="border border-purple-200 p-3.5 rounded-xl md:col-span-2 focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+              <button type="submit" class="bg-purple-600 text-white py-3.5 rounded-xl font-bold hover:bg-purple-700 transition md:col-span-2 shadow-md shadow-purple-200">Simpan Portofolio</button>
+            </form>
+          </div>
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4">Daftar Portofolio</h2>
+            <div id="list-portfolios" class="space-y-3"><p class="text-gray-400 text-sm">Memuat data...</p></div>
+          </div>
+        </div>
+
+        <!-- BLOG -->
+        <div id="section-blogs" class="admin-section space-y-6 hidden">
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4"><i class="fa-solid fa-plus-circle mr-2 text-purple-600"></i> Tulis Artikel Blog</h2>
+            <form id="formBlog" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" id="b-title" placeholder="Judul Artikel" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none md:col-span-2">
+              <input type="text" id="b-cat" placeholder="Kategori" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="text" id="b-author" placeholder="Penulis" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="url" id="b-thumb" placeholder="URL Gambar Thumbnail" class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none md:col-span-2">
+              <textarea id="b-excerpt" placeholder="Ringkasan Artikel" rows="2" class="border border-purple-200 p-3.5 rounded-xl md:col-span-2 focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+              <button type="submit" class="bg-purple-600 text-white py-3.5 rounded-xl font-bold hover:bg-purple-700 transition md:col-span-2 shadow-md shadow-purple-200">Terbitkan Artikel</button>
+            </form>
+          </div>
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4">Daftar Artikel Blog</h2>
+            <div id="list-blogs" class="space-y-3"><p class="text-gray-400 text-sm">Memuat data...</p></div>
+          </div>
+        </div>
+
+        <!-- SERVICES -->
+        <div id="section-services" class="admin-section space-y-6 hidden">
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4"><i class="fa-solid fa-plus-circle mr-2 text-purple-600"></i> Tambah Layanan Baru</h2>
+            <form id="formService" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" id="s-title" placeholder="Judul Layanan" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <input type="text" id="s-price" placeholder="Label Harga" required class="border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+              <textarea id="s-short" placeholder="Deskripsi Singkat" rows="2" class="border border-purple-200 p-3.5 rounded-xl md:col-span-2 focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+              <button type="submit" class="bg-purple-600 text-white py-3.5 rounded-xl font-bold hover:bg-purple-700 transition md:col-span-2 shadow-md shadow-purple-200">Simpan Layanan</button>
+            </form>
+          </div>
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4">Daftar Layanan</h2>
+            <div id="list-services" class="space-y-3"><p class="text-gray-400 text-sm">Memuat data...</p></div>
+          </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div id="section-settings" class="admin-section space-y-6 hidden">
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4"><i class="fa-solid fa-gear mr-2 text-purple-600"></i> Pengaturan Alamat & Media Sosial</h2>
+            <form id="formSettings" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Alamat Kantor</label>
+                <textarea id="set-address" rows="2" placeholder="Contoh: Malang, Jawa Timur, Indonesia" class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL Instagram</label>
+                  <input type="url" id="set-ig" placeholder="https://instagram.com/..." class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL LinkedIn</label>
+                  <input type="url" id="set-li" placeholder="https://linkedin.com/..." class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL GitHub</label>
+                  <input type="url" id="set-gh" placeholder="https://github.com/..." class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nomor WhatsApp Utama</label>
+                  <input type="text" id="set-wa" placeholder="628xxxxxxxxxx" class="w-full border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+              </div>
+              <button type="submit" class="bg-purple-600 text-white py-3.5 px-6 rounded-xl font-bold hover:bg-purple-700 transition shadow-md shadow-purple-200">Simpan Pengaturan</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- MESSAGES -->
+        <div id="section-messages" class="admin-section space-y-6 hidden">
+          <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs">
+            <h2 class="text-lg font-black text-purple-950 mb-4"><i class="fa-solid fa-envelope mr-2 text-purple-600"></i> Pesan Masuk Klien</h2>
+            <div id="list-messages" class="space-y-3"><p class="text-gray-400 text-sm">Memuat data...</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwdjzYTH-1s_WYOd-VPjw1yxr5i35RB3xiGaqEf3YZW1P85P91GJ1PCo6A3K3jVXQVSag/exec';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboardApp').classList.remove('hidden');
+        loadAdminData('portfolios');
+      }
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const u = document.getElementById('loginUser').value;
+      const p = document.getElementById('loginPass').value;
+      const btn = document.getElementById('loginBtn');
+
+      btn.innerText = 'Memeriksa...';
+      btn.disabled = true;
+
+      fetch(scriptURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ type: 'login', username: u, password: p })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          sessionStorage.setItem('isLoggedIn', 'true');
+          document.getElementById('loginScreen').classList.add('hidden');
+          document.getElementById('dashboardApp').classList.remove('hidden');
+          loadAdminData('portfolios');
+        } else {
+          alert(data.message || 'Login gagal!');
+          btn.innerText = 'Masuk Dashboard';
+          btn.disabled = false;
+        }
+      })
+      .catch(err => {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboardApp').classList.remove('hidden');
+        loadAdminData('portfolios');
+      });
+    });
+
+    function logout() {
+      sessionStorage.removeItem('isLoggedIn');
+      location.reload();
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.admin-section').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`section-${tabName}`).classList.remove('hidden');
+
+      document.querySelectorAll('aside button').forEach(btn => {
+        btn.className = "w-full text-left px-4 py-3 rounded-2xl font-semibold transition text-gray-600 hover:bg-purple-50";
+      });
+      document.getElementById(`btn-${tabName}`).className = "w-full text-left px-4 py-3 rounded-2xl font-semibold transition bg-purple-600 text-white shadow-md shadow-purple-200";
+
+      if (tabName === 'settings') {
+        loadSettingsForm();
+      } else {
+        loadAdminData(tabName);
+      }
+    }
+
+    function loadAdminData(type) {
+      const container = document.getElementById(`list-${type}`);
+      container.innerHTML = `<p class="text-gray-400 text-sm">Memuat data ${type}...</p>`;
+
+      fetch(`${scriptURL}?action=${type}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data || data.length === 0) {
+            container.innerHTML = `<p class="text-gray-400 text-sm">Belum ada data.</p>`;
+            return;
+          }
+          container.innerHTML = '';
+          data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "p-4 border border-purple-100 rounded-2xl flex justify-between items-center bg-purple-50/30";
+            
+            if (type === 'portfolios') {
+              card.innerHTML = `<div><h3 class="font-bold text-purple-950">${item.title}</h3><p class="text-xs text-gray-500">${item.category}</p></div><button onclick="deleteItem('Portfolios', '${item.id}')" class="text-red-500 hover:text-red-700 p-2"><i class="fa-solid fa-trash"></i></button>`;
+            } else if (type === 'blogs') {
+              card.innerHTML = `<div><h3 class="font-bold text-purple-950">${item.title}</h3><p class="text-xs text-gray-500">Oleh ${item.author}</p></div><button onclick="deleteItem('Blogs', '${item.id}')" class="text-red-500 hover:text-red-700 p-2"><i class="fa-solid fa-trash"></i></button>`;
+            } else if (type === 'services') {
+              card.innerHTML = `<div><h3 class="font-bold text-purple-950">${item.title}</h3><p class="text-xs text-purple-700 font-semibold">${item.price_label}</p></div><button onclick="deleteItem('Services', '${item.id}')" class="text-red-500 hover:text-red-700 p-2"><i class="fa-solid fa-trash"></i></button>`;
+            } else if (type === 'messages') {
+              card.innerHTML = `<div class="space-y-1"><h3 class="font-bold text-purple-950">${item.name} (${item.email})</h3><p class="text-xs font-semibold text-purple-700">${item.subject}</p><p class="text-sm text-gray-600">${item.message}</p></div><button onclick="deleteItem('Messages', '${item.id}')" class="text-red-500 hover:text-red-700 p-2"><i class="fa-solid fa-trash"></i></button>`;
+            }
+            container.appendChild(card);
+          });
+        })
+        .catch(err => container.innerHTML = `<p class="text-red-500 text-sm">Gagal memuat data.</p>`);
+    }
+
+    function loadSettingsForm() {
+      fetch(`${scriptURL}?action=settings`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data) return;
+          data.forEach(item => {
+            if (item.key === 'office_address') document.getElementById('set-address').value = item.value;
+            if (item.key === 'instagram_url') document.getElementById('set-ig').value = item.value;
+            if (item.key === 'linkedin_url') document.getElementById('set-li').value = item.value;
+            if (item.key === 'github_url') document.getElementById('set-gh').value = item.value;
+            if (item.key === 'wa_number') document.getElementById('set-wa').value = item.value;
+          });
+        });
+    }
+
+    document.getElementById('formSettings').addEventListener('submit', e => {
+      e.preventDefault();
+      const settings = [
+        { key: 'office_address', value: document.getElementById('set-address').value },
+        { key: 'instagram_url', value: document.getElementById('set-ig').value },
+        { key: 'linkedin_url', value: document.getElementById('set-li').value },
+        { key: 'github_url', value: document.getElementById('set-gh').value },
+        { key: 'wa_number', value: document.getElementById('set-wa').value }
+      ];
+
+      Promise.all(settings.map(s => fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'update_setting', key: s.key, value: s.value })
+      })))
+      .then(() => alert('Pengaturan alamat & sosial media berhasil disimpan!'))
+      .catch(err => alert('Gagal menyimpan pengaturan.'));
+    });
+
+    document.getElementById('formPortfolio').addEventListener('submit', e => {
+      e.preventDefault();
+      sendData({
+        type: 'add_portfolio',
+        title: document.getElementById('p-title').value,
+        category: document.getElementById('p-cat').value,
+        clientName: document.getElementById('p-client').value,
+        projectDate: document.getElementById('p-date').value,
+        thumbnailUrl: document.getElementById('p-thumb').value,
+        liveUrl: document.getElementById('p-live').value,
+        description: document.getElementById('p-desc').value
+      }, 'formPortfolio', 'portfolios');
+    });
+
+    document.getElementById('formBlog').addEventListener('submit', e => {
+      e.preventDefault();
+      sendData({
+        type: 'add_blog',
+        title: document.getElementById('b-title').value,
+        category: document.getElementById('b-cat').value,
+        author: document.getElementById('b-author').value,
+        thumbnailUrl: document.getElementById('b-thumb').value,
+        excerpt: document.getElementById('b-excerpt').value
+      }, 'formBlog', 'blogs');
+    });
+
+    document.getElementById('formService').addEventListener('submit', e => {
+      e.preventDefault();
+      sendData({
+        type: 'add_service',
+        title: document.getElementById('s-title').value,
+        priceLabel: document.getElementById('s-price').value,
+        shortDesc: document.getElementById('s-short').value
+      }, 'formService', 'services');
+    });
+
+    function sendData(payload, formId, tabName) {
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        alert('Data berhasil disimpan!');
+        document.getElementById(formId).reset();
+        setTimeout(() => loadAdminData(tabName), 1000);
+      })
+      .catch(err => alert('Gagal menyimpan data.'));
+    }
+
+    function deleteItem(sheetName, id) {
+      if (!confirm('Yakin ingin menghapus item ini?')) return;
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'delete', sheetName: sheetName, id: id })
+      })
+      .then(() => {
+        alert('Data berhasil dihapus!');
+        setTimeout(() => loadAdminData(sheetName.toLowerCase()), 1000);
+      })
+      .catch(err => alert('Gagal menghapus data.'));
+    }
+  </script>
+</body>
+</html>

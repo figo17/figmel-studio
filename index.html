@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figmel Studio — UI/UX & Web Development Agency</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-purple-50/40 text-gray-800 font-sans antialiased selection:bg-purple-200 selection:text-purple-900">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-purple-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      <a href="#" class="text-2xl font-black tracking-tight text-purple-900 flex items-center gap-2">
+        <span class="bg-purple-600 text-white w-9 h-9 rounded-xl flex items-center justify-center text-lg font-bold shadow-md shadow-purple-200">FS</span>
+        Figmel Studio
+      </a>
+      <nav class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+        <a href="#home" class="hover:text-purple-600 transition">Home</a>
+        <a href="#about" class="hover:text-purple-600 transition">About</a>
+        <a href="#services" class="hover:text-purple-600 transition">Services</a>
+        <a href="#portfolio" class="hover:text-purple-600 transition">Portfolio</a>
+        <a href="#blog" class="hover:text-purple-600 transition">Blog</a>
+        <a href="#contact" class="bg-purple-600 text-white px-5 py-2.5 rounded-xl hover:bg-purple-700 shadow-md shadow-purple-200 transition">Let's Talk</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-purple-900 text-xl focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-purple-100 px-6 py-4 space-y-3">
+      <a href="#home" class="block text-gray-600 hover:text-purple-600 font-medium">Home</a>
+      <a href="#about" class="block text-gray-600 hover:text-purple-600 font-medium">About</a>
+      <a href="#services" class="block text-gray-600 hover:text-purple-600 font-medium">Services</a>
+      <a href="#portfolio" class="block text-gray-600 hover:text-purple-600 font-medium">Portfolio</a>
+      <a href="#blog" class="block text-gray-600 hover:text-purple-600 font-medium">Blog</a>
+      <a href="#contact" class="block text-center bg-purple-600 text-white py-2 rounded-xl font-medium">Let's Talk</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="bg-purple-100 text-purple-700 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase">✨ Creative Digital Agency</span>
+        <h1 class="text-4xl md:text-6xl font-black text-purple-950 leading-tight">Crafting Elegant Digital Experiences & Solutions</h1>
+        <p class="text-gray-600 text-lg leading-relaxed">Figmel Studio membantu bisnis Anda tumbuh melalui desain UI/UX yang memukau, pengembangan web kustom yang handal, dan teknologi mutakhir.</p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#contact" class="bg-purple-600 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-purple-700 text-center shadow-lg shadow-purple-200 transition">Mulai Proyek</a>
+          <a href="#portfolio" class="bg-white border border-purple-200 text-purple-900 px-8 py-4 rounded-2xl font-semibold hover:bg-purple-50 text-center transition">Lihat Portofolio</a>
+        </div>
+      </div>
+      <div class="relative flex justify-center">
+        <div class="w-full max-w-md h-80 md:h-96 bg-gradient-to-tr from-purple-200 to-purple-400 rounded-3xl shadow-2xl flex items-center justify-center p-8 text-white text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-purple-900/10 backdrop-blur-xs"></div>
+          <div class="relative z-10 space-y-3">
+            <i class="fa-solid fa-laptop-code text-6xl text-white drop-shadow-md"></i>
+            <h3 class="text-2xl font-bold">Figmel Studio</h3>
+            <p class="text-sm text-purple-100">Modern Web App & UI/UX Specialist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center space-y-4 mb-16">
+        <h2 class="text-3xl font-black text-purple-950">Tentang Kami</h2>
+        <p class="text-gray-600">Kami adalah tim kreatif yang berfokus pada kualitas, estetika, dan performa tinggi dalam setiap lini produk digital.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-purple-50/50 p-8 rounded-3xl border border-purple-100 space-y-4">
+          <div class="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 class="text-xl font-bold text-purple-900">Visi & Misi</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Menjadi mitra teknologi terpercaya yang menghadirkan solusi inovatif dan berdampak tinggi bagi transformasi digital klien.</p>
+        </div>
+        <div class="bg-purple-50/50 p-8 rounded-3xl border border-purple-100 space-y-4">
+          <div class="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-gem"></i></div>
+          <h3 class="text-xl font-bold text-purple-900">Desain Elegan</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Memadukan estetika visual ungu muda yang modern dengan pengalaman pengguna (UX) yang intuitif dan menyenangkan.</p>
+        </div>
+        <div class="bg-purple-50/50 p-8 rounded-3xl border border-purple-100 space-y-4">
+          <div class="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-code"></i></div>
+          <h3 class="text-xl font-bold text-purple-900">Teknologi Handal</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Dibangun menggunakan standar arsitektur perangkat lunak terkini yang cepat, aman, dan responsif di berbagai perangkat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center space-y-4 mb-16">
+        <h2 class="text-3xl font-black text-purple-950">Layanan Kami</h2>
+        <p class="text-gray-600">Solusi menyeluruh untuk kebutuhan digital dan pengembangan produk Anda.</p>
+      </div>
+      <div id="servicesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs animate-pulse h-48"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center space-y-4 mb-16">
+        <h2 class="text-3xl font-black text-purple-950">Portofolio Pilihan</h2>
+        <p class="text-gray-600">Beberapa karya terbaik yang telah kami kerjakan untuk berbagai klien.</p>
+      </div>
+      <div id="portfolioContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-purple-50 p-8 rounded-3xl border border-purple-100 animate-pulse h-64"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center space-y-4 mb-16">
+        <h2 class="text-3xl font-black text-purple-950">Artikel & Wawasan</h2>
+        <p class="text-gray-600">Tips, trik, dan artikel terbaru seputar teknologi dan desain.</p>
+      </div>
+      <div id="blogContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl border border-purple-100 animate-pulse h-64"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <span class="bg-purple-100 text-purple-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase">Hubungi Kami</span>
+          <h2 class="text-3xl md:text-4xl font-black text-purple-950">Mari Diskusikan Proyek Impian Anda Bersama Kami</h2>
+          <p class="text-gray-600 leading-relaxed">Punya pertanyaan atau ingin mulai bekerja sama? Kirimkan pesan melalui formulir di samping atau hubungi kontak resmi kami.</p>
+          <div class="space-y-4 pt-2">
+            <div class="flex items-center gap-4 text-gray-700">
+              <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center font-bold"><i class="fa-solid fa-location-dot"></i></div>
+              <span id="dynamic-address">Memuat alamat...</span>
+            </div>
+            <div class="flex items-center gap-4 text-gray-700">
+              <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center font-bold"><i class="fa-solid fa-envelope"></i></div>
+              <span>hello@figmelstudio.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-purple-50/50 p-8 md:p-10 rounded-3xl border border-purple-100 shadow-sm">
+          <form id="contactForm" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Lengkap</label>
+              <input type="text" id="c-name" required class="w-full bg-white border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Alamat Email</label>
+              <input type="email" id="c-email" required class="w-full bg-white border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nomor WhatsApp</label>
+              <input type="text" id="c-wa" required class="w-full bg-white border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Subjek / Layanan</label>
+              <input type="text" id="c-subject" required class="w-full bg-white border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Pesan</label>
+              <textarea id="c-message" rows="3" required class="w-full bg-white border border-purple-200 p-3.5 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full bg-purple-600 text-white py-4 rounded-xl font-bold hover:bg-purple-700 shadow-md shadow-purple-200 transition">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-950 text-purple-200 py-12 border-t border-purple-900">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <div class="bg-purple-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold">FS</div>
+        <span class="text-white font-bold text-lg">Figmel Studio</span>
+      </div>
+      <p class="text-sm text-purple-400">&copy; 2026 Figmel Studio. All rights reserved.</p>
+      <div class="flex gap-4 text-lg">
+        <a id="social-ig" href="#" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+        <a id="social-li" href="#" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+        <a id="social-gh" href="#" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwdjzYTH-1s_WYOd-VPjw1yxr5i35RB3xiGaqEf3YZW1P85P91GJ1PCo6A3K3jVXQVSag/exec';
+
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadServices();
+      loadPortfolios();
+      loadBlogs();
+      loadSiteSettings();
+    });
+
+    function loadServices() {
+      fetch(`${scriptURL}?action=services`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('servicesContainer');
+          if (!data || data.length === 0) {
+            container.innerHTML = `<p class="text-gray-500 col-span-3 text-center">Belum ada layanan tersedia.</p>`;
+            return;
+          }
+          container.innerHTML = '';
+          data.forEach(item => {
+            container.innerHTML += `
+              <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-xs space-y-4 hover:shadow-md transition">
+                <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-layer-group"></i></div>
+                <h3 class="text-xl font-bold text-purple-900">${item.title}</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">${item.short_desc}</p>
+                <div class="pt-2 font-bold text-purple-700">${item.price_label || ''}</div>
+              </div>
+            `;
+          });
+        }).catch(err => console.error("Error load services:", err));
+    }
+
+    function loadPortfolios() {
+      fetch(`${scriptURL}?action=portfolios`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('portfolioContainer');
+          if (!data || data.length === 0) {
+            container.innerHTML = `<p class="text-gray-500 col-span-3 text-center">Belum ada portofolio tersedia.</p>`;
+            return;
+          }
+          container.innerHTML = '';
+          data.forEach(item => {
+            container.innerHTML += `
+              <div class="bg-purple-50/40 border border-purple-100 rounded-3xl overflow-hidden shadow-xs flex flex-col">
+                <div class="h-48 bg-purple-200 overflow-hidden relative">
+                  <img src="${item.thumbnail_url || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80'}" alt="${item.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wide">${item.category}</span>
+                    <h3 class="text-xl font-bold text-purple-950">${item.title}</h3>
+                    <p class="text-gray-600 text-sm">${item.description}</p>
+                  </div>
+                  ${item.live_url ? `<a href="${item.live_url}" target="_blank" class="text-sm font-bold text-purple-700 hover:underline inline-flex items-center gap-1">Lihat Proyek <i class="fa-solid fa-arrow-right text-xs"></i></a>` : ''}
+                </div>
+              </div>
+            `;
+          });
+        }).catch(err => console.error("Error load portfolios:", err));
+    }
+
+    function loadBlogs() {
+      fetch(`${scriptURL}?action=blogs`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('blogContainer');
+          if (!data || data.length === 0) {
+            container.innerHTML = `<p class="text-gray-500 col-span-3 text-center">Belum ada artikel blog.</p>`;
+            return;
+          }
+          container.innerHTML = '';
+          data.forEach(item => {
+            container.innerHTML += `
+              <div class="bg-white border border-purple-100 rounded-3xl overflow-hidden shadow-xs flex flex-col">
+                <div class="h-44 bg-purple-100">
+                  <img src="${item.thumbnail_url || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80'}" alt="${item.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wide">${item.category || 'Teknologi'}</span>
+                    <h3 class="text-lg font-bold text-purple-950">${item.title}</h3>
+                    <p class="text-gray-600 text-sm">${item.excerpt || ''}</p>
+                  </div>
+                  <div class="text-xs text-gray-400 pt-2 border-t border-purple-50 flex justify-between">
+                    <span>Oleh ${item.author}</span>
+                    <span>${new Date(item.published_at).toLocaleDateString()}</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+        }).catch(err => console.error("Error load blogs:", err));
+    }
+
+    function loadSiteSettings() {
+      fetch(`${scriptURL}?action=settings`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data) return;
+          data.forEach(item => {
+            if (item.key === 'office_address') {
+              const el = document.getElementById('dynamic-address');
+              if (el) el.innerText = item.value;
+            }
+            if (item.key === 'instagram_url') {
+              const el = document.getElementById('social-ig');
+              if (el && item.value) el.href = item.value;
+            }
+            if (item.key === 'linkedin_url') {
+              const el = document.getElementById('social-li');
+              if (el && item.value) el.href = item.value;
+            }
+            if (item.key === 'github_url') {
+              const el = document.getElementById('social-gh');
+              if (el && item.value) el.href = item.value;
+            }
+          });
+        });
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.innerText = 'Mengirim...';
+      btn.disabled = true;
+
+      const payload = {
+        type: "contact",
+        name: document.getElementById('c-name').value,
+        email: document.getElementById('c-email').value,
+        whatsapp: document.getElementById('c-wa').value,
+        subject: document.getElementById('c-subject').value,
+        message: document.getElementById('c-message').value
+      };
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        alert('Pesan Anda berhasil dikirim ke Figmel Studio!');
+        document.getElementById('contactForm').reset();
+        btn.innerText = 'Kirim Pesan';
+        btn.disabled = false;
+      })
+      .catch(err => {
+        alert('Gagal mengirim pesan, silakan coba lagi.');
+        btn.innerText = 'Kirim Pesan';
+        btn.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>
